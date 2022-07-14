@@ -31,7 +31,11 @@ public class QueryProcessor {
             int max = Integer.MIN_VALUE;
             for (int i = 0; i < split.length; i++) {
                 try {
-                    int j = Integer.parseInt(split[i].substring(0, split[i].length()-1));
+                    String part = split[i];
+                    if (part.contains(",")) {
+                        part = part.substring(0, part.length()-1);
+                    }
+                    int j = Integer.parseInt(part);
                     max = Math.max(max, j);
                 } catch (Exception e) {}
             }
