@@ -13,8 +13,15 @@ public class QueryProcessor {
                     "writer in the English language and the world's pre-eminent dramatist.";
         } else if (query.contains("name")) {
            return "MyTeam";
-        } else { // TODO extend the programm here
-            return "";
+        } else if (query.contains("what is")) {
+            query = query.substring(8);
+            int n = query.indexOf('+');
+            String a = query.substring(0, n);
+            String b = query.substring(n+1);
+            int x = Integer.parseInt(a);
+            int y = Integer.parseInt(b);
+            return "" + (x + y);
         }
+        return "";
     }
 }
