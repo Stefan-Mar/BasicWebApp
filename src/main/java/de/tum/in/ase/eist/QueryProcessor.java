@@ -2,6 +2,8 @@ package de.tum.in.ase.eist;
 
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
+
 @Service
 public class QueryProcessor {
 
@@ -25,7 +27,15 @@ public class QueryProcessor {
             int y = Integer.parseInt(split[i]);
             return "" + (x + y);
         } else if (query.contains("which")) {
-
+            String[] split = query.split(" ");
+            int max = Integer.MIN_VALUE;
+            for (int i = 0; i < split.length; i++) {
+                try {
+                    int j = Integer.parseInt(split[i].substring(0, split[i].length()-1));
+                    max = Math.max(max, j);
+                } catch (Exception e) {}
+            }
+            return "" + max;
         }
         return "";
     }
